@@ -1,0 +1,17 @@
+<h1>Welcome to the longest word-game!</h1>
+<h2>Here is your grid:</h2>
+<div class="d-flex justify-content-center container">
+	<div class="row">
+		<% @letters.each do |letter| %>
+			<div class="col p-4 border bg-info font-weight-bold text-white"><%= letter %></div>
+		<% end %>
+	</div>
+</div>
+
+<h2>What is your longest word?</h2>
+<form action="/score" method="post">
+	<input type="text" name="word" placeholder="What is your word?" value="<%= params[:word] %>">
+	<input type="submit" value="Submit!">
+	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	<%= hidden_field_tag :letters, @letters %>
+</form>
